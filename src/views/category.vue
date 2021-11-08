@@ -103,6 +103,8 @@ export default {
         this.productArray = this.latestProducts.filter(
           (product) => product.price >= 100
         );
+      } else {
+        this.productArray = this.latestProducts;
       }
     },
   },
