@@ -1,107 +1,112 @@
 <template>
-  <nav class="navbar navbar-dark bg-secondary">
+  <nav class="navbar navbar-dark bg-secondary nav-class">
     <!-- Brand Logo -->
     <router-link class="navbar-brand" to="/">
       <strong> @niket's </strong>
     </router-link>
+
+    <!-- Search Bar -->
+    <div class="mt-2"><Searcher /></div>
+
     <!-- Products Section -->
-    <div style="display: flex">
-      <div style="display: flex">
-        <div class="dropdown">
-          <span class="navbar-text text-white mr-3 drop-ele"> Cloths </span>
-          <div class="dropdown-content">
-            <router-link
-              class="navbar-text"
-              :to="{ name: 'Category', params: { category_slug: men } }"
-              :key="$route.path"
-            >
-              Men's Cloths
-            </router-link>
-            <router-link
-              class="navbar-text"
-              :to="{ name: 'Category', params: { category_slug: women } }"
-              :key="$route.path"
-            >
-              Women's Cloths
-            </router-link>
-          </div>
-        </div>
-
+    <!-- Cloths Drop Down -->
+    <div class="dropdown">
+      <span class="navbar-text text-white mr-3 drop-ele"> Cloths </span>
+      <div class="dropdown-content">
         <router-link
-          class="
-            navbar-text
-            text-white
-            mr-3
-            text-decoration-none
-            font-weight-bold
-          "
-          :to="{
-            name: 'Category',
-            params: { category_slug: 'electronics' },
-          }"
+          class="navbar-text"
+          :to="{ name: 'Category', params: { category_slug: men } }"
           :key="$route.path"
         >
-          Electronics
+          Men's Cloths
         </router-link>
-
         <router-link
-          class="
-            navbar-text
-            text-white
-            mr-3
-            text-decoration-none
-            font-weight-bold
-          "
-          :to="{
-            name: 'Category',
-            params: { category_slug: 'jewelery' },
-          }"
+          class="navbar-text"
+          :to="{ name: 'Category', params: { category_slug: women } }"
           :key="$route.path"
         >
-          Jewelery
+          Women's Cloths
         </router-link>
       </div>
-      <!-- Authentication Section -->
-      <div v-if="!isAuthenticated">
-        <router-link class="btn btn-primary mr-2" tag="button" to="/signin">
-          SignIn
-        </router-link>
-        <router-link class="btn btn-primary mr-2" tag="button" to="/signup">
-          SignUp
-        </router-link>
-      </div>
-      <!-- Logout Section -->
-      <div v-else>
-        <span class="navbar-text text-white mr-3 font-weight-bold">{{
-          email
-        }}</span>
-        <button class="btn btn-danger mr-2 mb-1" type="button" @click="logout">
-          Logout
-        </button>
-      </div>
-      <div class="addToCart">
-        <router-link class="btn btn-success" tag="button" to="/cart">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="18"
-            fill="currentColor"
-            class="bi bi-cart"
-            viewBox="0 1 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-            />
-          </svg>
-          Cart ({{ cartCount() }})
-        </router-link>
-      </div>
+    </div>
+    <!-- Other Products -->
+    <div>
+      <router-link
+        class="
+          navbar-text
+          text-white
+          mr-5
+          text-decoration-none
+          font-weight-bold
+        "
+        :to="{
+          name: 'Category',
+          params: { category_slug: 'electronics' },
+        }"
+        :key="$route.path"
+      >
+        Electronics
+      </router-link>
+
+      <router-link
+        class="
+          navbar-text
+          text-white
+          mr-3
+          text-decoration-none
+          font-weight-bold
+        "
+        :to="{
+          name: 'Category',
+          params: { category_slug: 'jewelery' },
+        }"
+        :key="$route.path"
+      >
+        Jewelery
+      </router-link>
+    </div>
+    <!-- Authentication Section -->
+    <div v-if="!isAuthenticated">
+      <router-link class="btn btn-primary mr-4" tag="button" to="/signin">
+        SignIn
+      </router-link>
+      <router-link class="btn btn-primary mr-2" tag="button" to="/signup">
+        SignUp
+      </router-link>
+    </div>
+    <!-- Logout Section -->
+    <div v-else>
+      <span class="navbar-text text-white mr-3 font-weight-bold">{{
+        email
+      }}</span>
+      <button class="btn btn-danger mr-2 mb-1" type="button" @click="logout">
+        Logout
+      </button>
+    </div>
+    <!-- Cart Section -->
+    <div class="addToCart">
+      <router-link class="btn btn-success" tag="button" to="/cart">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="18"
+          fill="currentColor"
+          class="bi bi-cart"
+          viewBox="0 1 16 16"
+        >
+          <path
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+          />
+        </svg>
+        Cart ({{ cartCount() }})
+      </router-link>
     </div>
   </nav>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Searcher from "@/components/Searcher.vue";
 
 export default {
   name: "NavBar",
@@ -112,14 +117,12 @@ export default {
       women: "women's clothing",
     };
   },
+  components: {
+    Searcher,
+  },
   computed: {
     ...mapGetters(["email", "isAuthenticated", "cartItems"]),
   },
-  // watch: {
-  //   cartItems: function () {
-  //     this.cartNumber = this.cartCount();
-  //   },
-  // },
   methods: {
     ...mapActions(["logout"]),
     cartCount() {
@@ -134,6 +137,9 @@ export default {
 
 
 <style scoped>
+.nav-class {
+  display: flex;
+}
 .drop-ele {
   cursor: pointer;
   font-weight: bold;
