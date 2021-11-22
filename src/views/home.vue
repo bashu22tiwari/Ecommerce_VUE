@@ -3,8 +3,10 @@
     <!-- Main Section -->
     <section class="banner">
       <div class="banner-body">
-        <p class="welcome-slogan">Welcome to @niket's Store</p>
-        <p class="mini-tagline">The best "Ecommerce" store online</p>
+        <p class="welcome-slogan">
+          {{ $t("welcomeMsg") }}
+        </p>
+        <p class="mini-tagline">{{ $t("storeDesc") }}</p>
       </div>
     </section>
 

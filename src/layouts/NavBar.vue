@@ -11,21 +11,23 @@
     <!-- Products Section -->
     <!-- Cloths Drop Down -->
     <div class="dropdown">
-      <span class="navbar-text text-white mr-3 drop-ele"> Cloths </span>
+      <span class="navbar-text text-white mr-3 drop-ele">
+        {{ $t("cloths") }}
+      </span>
       <div class="dropdown-content">
         <router-link
           class="navbar-text"
           :to="{ name: 'Category', params: { category_slug: men } }"
           :key="$route.path"
         >
-          Men's Cloths
+          {{ $t("mens") }}
         </router-link>
         <router-link
           class="navbar-text"
           :to="{ name: 'Category', params: { category_slug: women } }"
           :key="$route.path"
         >
-          Women's Cloths
+          {{ $t("womens") }}
         </router-link>
       </div>
     </div>
@@ -45,7 +47,7 @@
         }"
         :key="$route.path"
       >
-        Electronics
+        {{ $t("electronics") }}
       </router-link>
 
       <router-link
@@ -62,7 +64,7 @@
         }"
         :key="$route.path"
       >
-        Jewelery
+        {{ $t("jewelery") }}
       </router-link>
     </div>
     <!-- Authentication Section -->
